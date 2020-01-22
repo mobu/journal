@@ -1,4 +1,4 @@
-baseurl = "https://mobusjournal.blog"
+baseurl = "/"
 languageCode = "en-us"
 Title = "Mobu's Journal"
 # Copyright notice. This is displayer in the footer.
