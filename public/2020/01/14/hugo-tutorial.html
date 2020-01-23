@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hugo Tutorial &middot; Mubasser Kamal</title>
+        <meta name="description" content="For Windows, download from https://github.com/gohugoio/hugo/releases
+  Extract the zip file in any folder.
+  (Optional) You can add the folder path to the PATH environment variable.
+ Click on the Windows search button and type env    Click the Environment Variables&hellip; button    Double-click the Path variable (you can also select Path and click on the Edit button)    Add the full path of the Hugo directory (Hugo.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.62.2" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Hugo Tutorial">
+<meta property="og:description" content="For Windows, download from https://github.com/gohugoio/hugo/releases
+  Extract the zip file in any folder.
+  (Optional) You can add the folder path to the PATH environment variable.
+ Click on the Windows search button and type env    Click the Environment Variables&hellip; button    Double-click the Path variable (you can also select Path and click on the Edit button)    Add the full path of the Hugo directory (Hugo.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/2020/01/14/hugo-tutorial.html">
+        <link rel="stylesheet" href="../../../dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Mobu&#39;s Journal" href="../../../">Mobu&#39;s Journal</a>
+                            </h1>
+                        
+                        <a class="button-square" href="../../../index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/mobu" rel="me">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="../../../">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="../../../page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="../../../page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Hugo Tutorial</h1>
+    
+    <p class="post-date post-line">
+        <span>Published <time datetime="2020-01-14" itemprop="datePublished">Tue, Jan 14, 2020</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Mubasser Kamal</a>
+            </span>
+        </span>
+    </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <ol>
+<li>
+<p>For Windows, download from <a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a></p>
+</li>
+<li>
+<p>Extract the zip file in any folder.</p>
+</li>
+<li>
+<p><em>(Optional)</em> You can add the folder path to the PATH environment variable.</p>
+<ol>
+<li>Click on the Windows search button and type <strong>env</strong>
+<figure>
+    <img src="../../../img/envsettings.png"/> 
+</figure>
+</li>
+<li>Click the <strong>Environment Variables&hellip;</strong> button
+<figure>
+    <img src="../../../img/systemproperties.png"/> 
+</figure>
+</li>
+<li>Double-click the <strong>Path</strong> variable <em>(you can also select Path and click on the Edit button)</em>
+<figure>
+    <img src="../../../img/pathfield.png"/> 
+</figure>
+</li>
+<li>Add the full path of the Hugo directory (Hugo.exe). Click OK
+<figure>
+    <img src="../../../img/editenvvar.png"/> 
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>Go to a directory where you want your blog to live. Remember that Hugo will automatically create the folder for you so you don't have to create a separate folder by yourself.</p>
+<blockquote>
+<p><code>hugo new site UltimateBlog</code></p>
+</blockquote>
+<figure>
+    <img src="../../../img/hugonewsite.png"
+         alt="You can also use Command Prompt instead of PowerShell"/> <figcaption>
+            <p><em>You can also use Command Prompt instead of PowerShell</em></p>
+        </figcaption>
+</figure>
+
+</li>
+<li>
+<p>The new site <strong>UltimateBlog</strong> will be created with its own folder and files.
+<figure>
+    <img src="../../../img/newsitecreated.png"
+         alt="At this point, you can type hugo serve and navigate to localhost:1313 in your browser but you will be presented with a blank page. So let&#39;s get some themes going!"/> <figcaption>
+            <p>At this point, you can type <em>hugo serve</em> and navigate to localhost:1313 in your browser but you will be presented with a blank page. So let's get some themes going!</p>
+        </figcaption>
+</figure>
+</p>
+</li>
+</ol>
+<h1 id="themes">THEMES</h1>
+<ol>
+<li>
+<p>Open up a browser and navigate to <a href="https://themes.gohugo.io">https://themes.gohugo.io</a>. We will be selecting the <strong>Paper</strong> theme but you can choose any theme you like. 
+<figure>
+    <img src="../../../img/themessite.png"/> 
+</figure>
+</p>
+</li>
+<li>
+<p>Even though there is a Download button, I prefer to go to the homepage and download it from the GitHub page (usually they are hosted on GitHub). Click on the <strong>Homepage</strong> button.
+<figure>
+    <img src="../../../img/papertheme.png"/> 
+</figure>
+</p>
+</li>
+<li>
+<p>Download the ZIP file from GitHub as shown.
+<figure>
+    <img src="../../../img/papergithub.png"/> 
+</figure>
+</p>
+</li>
+<li>
+<p>You can save it anywhere you like but I prefer to download inside the themes folder of the blog.</p>
+<blockquote>
+<p>../UltimateBlog/themes</p>
+</blockquote>
+</li>
+<li>
+<p>Unzip the folder. You can change the folder name from <strong>hugo-paper-master</strong> to <strong>paper</strong> only.</p>
+</li>
+<li>
+<p>Inside the theme folder, you will find a file ending with a *.toml extension.</p>
+</li>
+</ol>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Hugo%20Tutorial&url=%2f2020%2f01%2f14%2fhugo-tutorial.html"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2020%2f01%2f14%2fhugo-tutorial.html"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2020%2f01%2f14%2fhugo-tutorial.html"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Mobu&#39;s Journal" href="../../../">Mobu&#39;s Journal</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2020 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="../../../js/jquery-1.11.3.min.js"></script>
+        <script src="../../../js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="../../../js/scripts.js"></script>
+    </body>
+</html>
+

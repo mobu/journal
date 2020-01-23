@@ -1,10 +1,10 @@
-baseurl = "/"
-title = "Mobu's Journal"
+baseurl = "https://example.com/"
+title = "Ghostwriter example"
 theme = "ghostwriter"
 languageCode = "en-us"
-copyright = "Mubasser Kamal"
-relativeURLs = true
-uglyURLs = true
+copyright = "My Name"
+disqusShortname = "XXX"
+googleAnalytics = "XXX"
 
 [Privacy]
 
@@ -17,8 +17,8 @@ uglyURLs = true
     useSessionStorage = false
 
 [Author]
-    name = "Mubasser Kamal"
-    #profile = "https://google.com/+XXX"
+    name = "My Name"
+    profile = "https://google.com/+XXX"
 
 [Taxonomies]
     tag = "tags"
@@ -26,16 +26,16 @@ uglyURLs = true
 [Params]
     mainSections = ["post"]
     intro = true
-    headline = "Journal"
-    description = "Collection of all things learned"
-    github = "https://github.com/mobu"
-    #gitlab = "https://gitlab.com/XXX"
-    #linkedin = "https://linkedin.com/in/XXX/"
-    #gplus = "https://google.com/+XXX"
-    #twitter = "https://twitter.com/XXX"
-    #stackoverflow = "https://stackoverflow.com/users/XXX/YYY"
-    #facebook = "https://www.facebook.com/username"
-    #email = "XXX@example.com"
+    headline = "Ghostwriter example"
+    description = "Ghostwriter example description"
+    github = "https://github.com/XXX"
+    gitlab = "https://gitlab.com/XXX"
+    linkedin = "https://linkedin.com/in/XXX/"
+    gplus = "https://google.com/+XXX"
+    twitter = "https://twitter.com/XXX"
+    stackoverflow = "https://stackoverflow.com/users/XXX/YYY"
+    facebook = "https://www.facebook.com/username"
+    email = "XXX@example.com"
     opengraph = true
     shareTwitter = true
     shareFacebook = true
@@ -48,7 +48,7 @@ uglyURLs = true
     exponeaTarget = ""
     exponeaToken = ""
     exponeaTrackVisits = false
-    readingTime = false
+    readingTime = true
     readingTimeText = "Estimated reading time:"
     fathomUrl = ""
     fathomSiteId = ""
@@ -62,11 +62,16 @@ uglyURLs = true
     weight = 1
 
 [[menu.main]]
+    name = "Projects"
+    url = "/project/"
+    weight = 2
+
+[[menu.main]]
     name = "Contact"
     url = "/page/contact/"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     name = "About"
     url = "/page/about/"
-    weight = 3
+    weight = 4
