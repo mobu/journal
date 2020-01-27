@@ -4,7 +4,12 @@ theme = "ghostwriter"
 languageCode = "en-us"
 copyright = "Mubasser Kamal"
 relativeURLs = true
-uglyURLs = true
+uglyURLs = false
+pygmentsUseClasses=true
+highlightjsVersion = "9.18.0"
+highlightjsCDN = "//cdn.bootcss.com"
+highlightjsLang = ["dart"]
+highlightjsTheme = "dracula"
 
 [Privacy]
 
@@ -70,3 +75,9 @@ uglyURLs = true
     name = "About"
     url = "/page/about/"
     weight = 3
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 3

@@ -7,17 +7,68 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Mubasser Kamal</copyright>
-    <lastBuildDate>Tue, 14 Jan 2020 13:08:12 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 22:20:35 -0600</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>PostGIS - Installation</title>
+      <link>/2020/01/24/postgis/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgis/</guid>
+      <description>Update APT package list and upgrade system sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
+ </description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL - Management</title>
+      <link>/2020/01/24/postgres_management/</link>
+      <pubDate>Fri, 24 Jan 2020 21:24:09 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgres_management/</guid>
+      <description>Service management sudo service postgresql stop sudo service postgresql start sudo service postgresql restart Enter the database you created psql testdb Creating a table CREATE TABLE [IF NOT EXISTS] table_name ( column_name1 col_type (field_length) column_constraints, column_name2 col_type (field_length), column_name3 col_type (field_length) ); Listing information     Command Action     \l list all databases   \dt display all tables in current schema   \du list all users   \d list all the tables in the database   \d+ table_name retrieve detailed information about a table     Roles     Command Action     \du username list a username if present   create role rolename create a role with an existing username   create role rolename noinherit login password passsword; Create a role with username and password   set role test; change role for current session to test   grant role2 to role1; Allow test1 to set its role as role2     </description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL - Setup &amp; Installation</title>
+      <link>/2020/01/24/postgres/</link>
+      <pubDate>Fri, 24 Jan 2020 12:59:48 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgres/</guid>
+      <description>Installing PostgreSQL Prerequisite: Make sure to have Ubuntu set up first.
+ Using apt package manager, install Postgres (it&#39;s in the default Ubuntu repo).  $ sudo apt update $ sudo apt install postgresql postgresql-contrib Postgres associates roles with a matching Unix/Linux system account. So let&#39;s Switch over to the postgres account on your server by typing:  $ sudo -i -u postgres  postgres: this user is the superuser for the PostgreSQL instance</description>
+    </item>
+    
+    <item>
+      <title>Stream tutorial</title>
+      <link>/2020/01/21/steamtutorial/</link>
+      <pubDate>Tue, 21 Jan 2020 11:36:30 -0600</pubDate>
+      
+      <guid>/2020/01/21/steamtutorial/</guid>
+      <description>Streams To create a Stream you have to create a StreamController
+var controller = new StreamController&amp;lt;String&amp;gt;();controller.add(&amp;#34;Item1&amp;#34;); // Put first item on the belt The generic type (in this case String) that has to be passed when creating a StreamController defines which type of objects we can push onto the Stream.  Now we’ve got the trap set, using the .listen() method on the stream of the StreamController.
+var controller = new StreamController&amp;lt;String&amp;gt;();controller.</description>
+    </item>
+    
+    <item>
+      <title>Dart Streamcontroller - Streams and stuff</title>
+      <link>/2020/01/21/streamcontroller/</link>
+      <pubDate>Tue, 21 Jan 2020 11:15:46 -0600</pubDate>
+      
+      <guid>/2020/01/21/streamcontroller/</guid>
+      <description>BLoC Pattern  BLoC stands for Business Logic Components  Data Layer - The data layer is responsible for the app’s models and the connections to the back-end, it knows nothing about about the UI.
+The BLoC Pattern is really just an interface around Dart streams: Streams, like Futures, are provided by the dart:async package
+ A stream is like a Future, but instead of returning a single value asynchronously, streams can yield multiple values over time  First BLoC Create a new directory in the lib folder named BLoC.</description>
+    </item>
+    
+    <item>
       <title>Hugo Tutorial</title>
-      <link>/2020/01/14/hugo-tutorial.html</link>
+      <link>/2020/01/14/hugo-tutorial/</link>
       <pubDate>Tue, 14 Jan 2020 13:08:12 -0600</pubDate>
       
-      <guid>/2020/01/14/hugo-tutorial.html</guid>
+      <guid>/2020/01/14/hugo-tutorial/</guid>
       <description>For Windows, download from https://github.com/gohugoio/hugo/releases
   Extract the zip file in any folder.
   (Optional) You can add the folder path to the PATH environment variable.
@@ -26,10 +77,10 @@
     
     <item>
       <title>About the journal</title>
-      <link>/about.html</link>
+      <link>/about/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/about.html</guid>
+      <guid>/about/</guid>
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
