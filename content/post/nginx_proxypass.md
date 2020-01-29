@@ -7,6 +7,7 @@ tags = []
 draft = false
 +++
 ### Basic HTTP Proxy Pass
+The proxy_pass directive sets the address of the proxied server and the URI to which location will be mapped. 
 
 The **proxy_pass** directive is mainly found in *location* contexts.
 
@@ -25,6 +26,24 @@ The **proxy_pass** directive is mainly found in *location* contexts.
 - By default proxy_pass does not *verify* the certificate of the endpoint if it is https.
 
   > make sure to set `proxy_ssl_verify` to `on`
+  
+### location without regular expression
+1. If the proxy_pass directive is specified without a URI,
+	```
+	location /app/ {
+    proxy_pass      http://192.168.154.102;
+	}
+
+	test.com/app/xxxxx =>  http://192.168.154.102/xxxxx
+	``` 
+2. If the proxy_pass directive is specified with a URI:
+	```
+	location /app/ {
+    proxy_pass      http://192.168.154.102/maped_dir/;
+	}
+
+	test.com/app/xxxxx =>  http://192.168.154.102/maped_dir/xxxxx
+	``` 
 
 #### Upstream servers
 

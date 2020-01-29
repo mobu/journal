@@ -3,7 +3,8 @@ title = "Nginx - notes"
 description = "notes about nginx"
 author = "Mobu"
 date = 2020-01-28T01:09:50-06:00
-tags = []
+tags = ["nginx","basic nginx","directives","contexts"]
+category = ["nginx"]
 draft = false
 
 +++
