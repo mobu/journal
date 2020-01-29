@@ -10,7 +10,7 @@ draft = false
 ### 1. Turn On SELinux
 ### 2. Linux /etc/sysctl.conf Hardening
 Using sysctl, you can modify the kernel parameters without recompiling the kernel or rebooting the machine.
-```
+```nginx
 # Avoid a smurf attack
 net.ipv4.icmp_echo_ignore_broadcasts = 1
  
@@ -100,7 +100,7 @@ Edit nginx.conf and set the buffer size limitations for all clients.
 ```
 nano /usr/local/nginx/conf/nginx.conf
 ```  
-```
+```nginx
 # Edit and set the buffer size limitations for all clients as follows
 
  ## Start: Size Limits & Buffer Overflows ##
@@ -111,7 +111,7 @@ nano /usr/local/nginx/conf/nginx.conf
  ## END: Size Limits & Buffer Overflows ##
  ```
 ### 5. Control Simultaneous Connections
-```
+```nginx
 ### Directive describes the zone, in which the session states are stored i.e. store in slimits. ###
 ### 1m can handle 32000 sessions with 32 bytes/session, set to 5m x 32000 session ###
        limit_zone slimits $binary_remote_addr 5m;
@@ -121,7 +121,7 @@ nano /usr/local/nginx/conf/nginx.conf
         limit_conn slimits 5;
 ```
 ### 6. Allow Access To Our Domain Only
-```
+```nginx
 ## Only requests to our Host are allowed i.e. nixcraft.in, images.nixcraft.in and www.nixcraft.in
       if ($host !~ ^(nixcraft.in|www.nixcraft.in|images.nixcraft.in)$ ) {
          return 444;
@@ -130,7 +130,7 @@ nano /usr/local/nginx/conf/nginx.conf
 ```
 > You must only allow configured virtual domain or reverse proxy requests. You don’t want to display request using an IP address		
 ### 7. Limit Available Methods
-```
+```nginx
 ## Only allow these request methods ##
      if ($request_method !~ ^(GET|HEAD|POST)$ ) {
          return 444;
@@ -147,7 +147,7 @@ nano /usr/local/nginx/conf/nginx.conf
 ```
 ### 9. Limiting Directory Access 
 1. By IP Address
-	```
+	```nginx
 	location /docs/ {
 	  ## block one workstation
 	  deny    192.168.1.1;
@@ -165,7 +165,7 @@ nano /usr/local/nginx/conf/nginx.conf
 	# htpasswd -c /usr/local/nginx/conf/.htpasswd/passwd vivek
 	``` 
 ### 10. HTTP Headers
-```  
+```nginx
 # X-Frame
 add_header X-Frame-Options SAMEORIGIN;
 
@@ -181,14 +181,44 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 # Content-Security-Policy
 add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'";
 
+# X-Content-Type-Options
+add_header X-Content-Type-Options nosniff;
+
 # Access-Control-Allow-Origin
+// UNDER CONSTRUCTION
 location ~ \.(ttf|ttc|otf|eot|woff|font.css|css|js|gif|png|jpe?g|svg|svgz|ico|webp)$ {
     add_header Access-Control-Allow-Origin "*";
 }
-
-
+```
+### 11. Turn off sending Server token
+```nginx
+# don't send the nginx version number in error pages and Server header
+server_tokens off;
 ``` 
-### 11. Force HTTPS
+### 12. Force HTTPS
+```nginx
+server {
+    listen 80;
 
+    server_name foo.com;
+    return 301 https://foo.com$request_uri;
+}
+
+# Our sites/apps can then be set to listen on port 443 for SSL connections only.
+
+server {
+    listen 443 ssl http2;
+    server_name bar.com;
+}
+```
+### SSL Configuration
+```nginx
+ssl_protocols TLSv1.2 TLSv1.3;
+
+ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+
+ssl_prefer_server_ciphers on;
+ssl_session_cache shared:SSL:10m;
+```
 Sources:
 https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
