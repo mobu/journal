@@ -51,7 +51,28 @@ listen [::1];        # IPv6 addresses
 listen localhost:80; # you can even use hostnames:
 listen netguru.co:80;
 ```
-### Multiple virtual servers
+### root
+maps incoming request onto the file system
+```
+server {
+  listen 80;
+  server_name netguru.co;
+  root /var/www/netguru.co;
+}
+```
+### location
+set configuration depending on the requested URI. ```location [modifier] path```
+
+|Order|Modifier|Action|
+|----|----|----|
+|1|=|Exact match|
+|2|^~|Preferential match|
+|3|~ && ~*|Regex match|
+|4|no modifier|Prefix match|
+
+> the order determines which one is chosen at first
+---
+# Multiple virtual servers
 Inside nginx, you can specify multiple virtual servers, each described by a ```server { }``` context.
 ```
 server {
@@ -75,26 +96,3 @@ server {
   return 200 "Hello from bar.co";
 }
 ```
-### Basic HTTP Proxy Pass
-
-The **proxy_pass** directive is mainly found in *location* contexts.
-
-- When a request matches a location with a `proxy_pass` directive inside, the request is forwarded to the URL given by the directive.
-
-  ```nginx
-  # server context
-  
-  location /match/here {
-      proxy_pass http://example.com;
-  }
-  
-  . . .
-  ```
-
-- By default proxy_pass does not *verify* the certificate of the endpoint if it is https.
-
-  > make sure to set `proxy_ssl_verify` to `on`
-
-#### Upstream servers
-
-"upstream" is called whatever is behind the nginx.
