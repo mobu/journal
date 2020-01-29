@@ -67,3 +67,5 @@ $ sudo -u postgres psql
 ```sql
 grant all privileges on database testdb to mobu;
 ```
+
+Next: [Managing PostgreSQL](/2020/01/24/postgres_management/)
