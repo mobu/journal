@@ -16,9 +16,9 @@ draft = false
 	```
 	python -m venv . ⏎
 	``` 
-	_Notice_ the **dot** at the end of the statement.
+	_Notice_ the **dot** at the end of the statement. It basically says "here"
 	
-	> The -m stands for module-name. 
+	> The -m stands for module-name. venv is a built-in Python module that helps with virtual environments
 	
 ## Steps for cloning GitHub projects into Virtual Environments
 1. Navigate to the folder where you want the project to exist (don't make a folder; git will make a folder for the project)
