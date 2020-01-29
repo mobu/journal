@@ -1,6 +1,9 @@
 ---
 title: "Hugo Tutorial"
+description: "guide to Hugo"
 date: 2020-01-14T13:08:12-06:00
+tags: ["hugo","hugo blog","static site"]
+category: ["Hugo"]
 draft: false
 ---
 

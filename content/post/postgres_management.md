@@ -3,7 +3,8 @@ title = "PostgreSQL - Management"
 description = ""
 author = ""
 date = 2020-01-24T21:24:09-06:00
-tags = []
+tags = ["postgres","postgresql","install postgres","database","postgis"]
+category = ["PostgreSQL"]
 draft = false
 +++
 ### Service management

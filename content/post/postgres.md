@@ -4,7 +4,8 @@ title = "PostgreSQL - Setup & Installation"
 description = "Setting up PostgreSQL on Ubuntu"
 author = ""
 date = 2020-01-24T12:59:48-06:00
-tags = []
+tags = ["postgres","postgresql","install postgres","database","postgis"]
+category = ["PostgreSQL"]
 draft = false
 +++
 # Installing PostgreSQL

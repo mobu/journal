@@ -1,9 +1,10 @@
 +++
-title = "Python Virtualenv"
-description = ""
+title = "Python - Virtual Environment Setup"
+description = "venv and cloning projects from GitHub"
 author = ""
 date = 2020-01-28T15:00:08-06:00
-tags = []
+tags = ["python","venv","python3","python 3","virtual environment"]
+category = ["Python"]
 draft = false
 +++
 ## Python Virtual Environment
