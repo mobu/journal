@@ -80,5 +80,115 @@ net.core.wmem_max = 8388608
 net.core.netdev_max_backlog = 5000
 net.ipv4.tcp_window_scaling = 1
 ```  
+### 3. UFW Firewall
+We want ssh and Nginx to work. Nginx Full allows for both http (80) and https (443) connections.
+```
+sudo ufw allow ssh
+
+sudo ufw allow 'Nginx Full'
+```  
+Enable the UFW firewall
+```
+sudo ufw enable
+```  
+Remove Nginx Default
+```
+rm /etc/nginx/sites-enabled/default
+```  
+### 4. Controlling Buffer Overflow Attacks
+Edit nginx.conf and set the buffer size limitations for all clients.
+```
+nano /usr/local/nginx/conf/nginx.conf
+```  
+```
+# Edit and set the buffer size limitations for all clients as follows
+
+ ## Start: Size Limits & Buffer Overflows ##
+  client_body_buffer_size  1K;
+  client_header_buffer_size 1k;
+  client_max_body_size 1k;
+  large_client_header_buffers 2 1k;
+ ## END: Size Limits & Buffer Overflows ##
+ ```
+### 5. Control Simultaneous Connections
+```
+### Directive describes the zone, in which the session states are stored i.e. store in slimits. ###
+### 1m can handle 32000 sessions with 32 bytes/session, set to 5m x 32000 session ###
+       limit_zone slimits $binary_remote_addr 5m;
+ 
+### Control maximum number of simultaneous connections for one session i.e. ###
+### restricts the amount of connections from a single ip address ###
+        limit_conn slimits 5;
+```
+### 6. Allow Access To Our Domain Only
+```
+## Only requests to our Host are allowed i.e. nixcraft.in, images.nixcraft.in and www.nixcraft.in
+      if ($host !~ ^(nixcraft.in|www.nixcraft.in|images.nixcraft.in)$ ) {
+         return 444;
+      }
+##
+```
+> You must only allow configured virtual domain or reverse proxy requests. You don’t want to display request using an IP address		
+### 7. Limit Available Methods
+```
+## Only allow these request methods ##
+     if ($request_method !~ ^(GET|HEAD|POST)$ ) {
+         return 444;
+     }
+## Do not accept DELETE, SEARCH and other methods ##
+```
+### 8. Deny Certain User-Agents
+```
+## Block download agents ##
+     if ($http_user_agent ~* LWP::Simple|BBBike|wget) {
+            return 403;
+     }
+##
+```
+### 9. Limiting Directory Access 
+1. By IP Address
+	```
+	location /docs/ {
+	  ## block one workstation
+	  deny    192.168.1.1;
+
+	  ## allow anyone in 192.168.1.0/24
+	  allow   192.168.1.0/24;
+
+	  ## drop rest of the world
+	  deny    all;
+	}
+	``` 
+2. By password
+	```
+	# mkdir /usr/local/nginx/conf/.htpasswd/
+	# htpasswd -c /usr/local/nginx/conf/.htpasswd/passwd vivek
+	``` 
+### 10. HTTP Headers
+```  
+# X-Frame
+add_header X-Frame-Options SAMEORIGIN;
+
+# X-Content-Type-Options
+add_header X-Content-Type-Options nosniff;
+
+# X-XSS-Protection
+add_header X-XSS-Protection "1; mode=block";
+
+# Strict-Transport-Security
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+# Content-Security-Policy
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'";
+
+# Access-Control-Allow-Origin
+location ~ \.(ttf|ttc|otf|eot|woff|font.css|css|js|gif|png|jpe?g|svg|svgz|ico|webp)$ {
+    add_header Access-Control-Allow-Origin "*";
+}
+
+
+``` 
+### 11. Force HTTPS
+
 Sources:
 https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
