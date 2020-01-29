@@ -45,7 +45,11 @@ before you can store spatial data.
 	```
 	psql -d postgis_db
 	```  
-4. Verify PostGIS is working
+4. Enable the PostGIS extension on the database
+	```
+	CREATE EXTENSION postgis;
+	```  
+5. Verify PostGIS is working
 	```
 	SELECT PostGIS_version();
 	```  
