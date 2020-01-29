@@ -42,8 +42,8 @@ postgres=# SELECT version();
 ```bash
 postgres=# \q
 ```
-
-## Creating a New Role
+---
+### Creating a New Role
 A role can represent a database user or a group of database users.
 1. Log in as the **postgres** account and create a new user by typing:
 ```bash 
@@ -54,7 +54,7 @@ postgres@server:~$ createuser --interactive
 Enter name of role to add: mobu
 Shall the new role be a superuser? (y/n) y
 ```
-## Creating database
+### Creating database
 1. If you are logged in as the **postgres** account, type:
 ```bash
 postgres@server:~$ createdb testdb
