@@ -26,8 +26,8 @@ The **proxy_pass** directive is mainly found in *location* contexts.
 - By default proxy_pass does not *verify* the certificate of the endpoint if it is https.
 
   > make sure to set `proxy_ssl_verify` to `on`
-  
 ### location without regular expression
+Proxy_pass directive basically replaces the value in the location context.
 1. If the proxy_pass directive is specified without a URI,
 	```
 	location /app/ {
@@ -45,6 +45,5 @@ The **proxy_pass** directive is mainly found in *location* contexts.
 	test.com/app/xxxxx =>  http://192.168.154.102/maped_dir/xxxxx
 	``` 
 
-#### Upstream servers
-
-"upstream" is called whatever is behind the nginx.
+> #### Upstream servers
+> "upstream" is called whatever is behind the nginx.

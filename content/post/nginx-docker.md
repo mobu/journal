@@ -17,13 +17,31 @@ draft = false
 |quit|graceful shutdown (waits for workers)|
 |reload|reload the configuration file|
 |reopen|reopen the log files|
----
-### Configuration file
-By default, the nginx configuration file can be found in either:
+
+test nginx configuration changes
 ```
-/etc/nginx/nginx.conf,
-/usr/local/etc/nginx/nginx.conf, or
+# nginx -t
+
+the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+configuration file /usr/local/nginx/conf/nginx.conf test is successful
+```
+---
+### Configuration files
+```
+# nginx server configuration directory
+/usr/local/nginx/conf/
+/etc/nginx/
+
+# main configuration file
 /usr/local/nginx/conf/nginx.conf
+
+# default document location
+/usr/local/nginx/html/
+/var/www/html
+
+# default log file location
+/usr/local/nginx/logs/
+/var/log/nginx
 ```
 ---
 # Directives
