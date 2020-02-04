@@ -15,6 +15,10 @@ draft = false
 > Certificate authorities (CAs) are entities that cryptographically sign TLS/SSL certificates to vouch for their authenticity.
 ## 3-part process
 1. Install Certbot on your server
-2. Run Certbot with a command to obtain your SSL/TLS certificate and save it on your server.
+2. Run Certbot with a command to **obtain** your SSL/TLS certificate and **save** it on your server.
 3. Set up a cron job (scheduler) to run Certbot with a Certbot renew command on a weekly basis.
 
+This certificate consists of a private key and a public key and both these keys are saved in a Let's Encrypt folder on your server.
+```
+Nginx loads both the private and public keys in order to configure SSL/TLS for your site.
+```
