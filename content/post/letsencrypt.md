@@ -29,3 +29,5 @@ In order for Let's Encrypt to issue you a certificate, an ACME Challenge Request
 3. Let's Encrypt sends the Certbot agent a unique token
 4. The Certbot agent places the token at an endpoint on your domain that looks like http://ohhaithere.com/.well-known/acme-challenge/{token}
 5. If the token at the endpoint matches the token that was sent to the Certbot agent from the Let's Encrypt CA, the challenge request was successful and Let's Encrypt knows that you are in control of the domain.
+
+Source: https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx
