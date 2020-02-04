@@ -20,5 +20,12 @@ draft = false
 
 This certificate consists of a private key and a public key and both these keys are saved in a Let's Encrypt folder on your server.
 > Nginx loads both the **private** and **public** keys in order to configure SSL/TLS for your site.
-
-### Dockerizing Certbot
+---
+# Dockerizing Certbot
+A very basic instance of Nginx needs to be running on a host with a domain name before Certbot can be used
+In order for Let's Encrypt to issue you a certificate, an ACME Challenge Request is performed:
+1. You issue a command to the Certbot agent
+2. Certbot informs Let's Encrypt that you want an SSL/TLS certificate
+3. Let's Encrypt sends the Certbot agent a unique token
+4. The Certbot agent places the token at an endpoint on your domain that looks like http://ohhaithere.com/.well-known/acme-challenge/{token}
+5. If the token at the endpoint matches the token that was sent to the Certbot agent from the Let's Encrypt CA, the challenge request was successful and Let's Encrypt knows that you are in control of the domain.
