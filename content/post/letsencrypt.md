@@ -19,6 +19,4 @@ draft = false
 3. Set up a cron job (scheduler) to run Certbot with a Certbot renew command on a weekly basis.
 
 This certificate consists of a private key and a public key and both these keys are saved in a Let's Encrypt folder on your server.
-```
-Nginx loads both the private and public keys in order to configure SSL/TLS for your site.
-```
+> Nginx loads both the **private** and **public** keys in order to configure SSL/TLS for your site.
