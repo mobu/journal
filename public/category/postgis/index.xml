@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PostGIS on Mobu&#39;s Journal</title>
+    <link>/category/postgis/</link>
+    <description>Recent content in PostGIS on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Fri, 24 Jan 2020 22:20:35 -0600</lastBuildDate>
+    
+	<atom:link href="/category/postgis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PostGIS - Installation</title>
+      <link>/2020/01/24/postgis/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgis/</guid>
+      <description>Installation   Update APT package list and upgrade system Prerequisite: PostgreSQL will need to be installed and configured beforehand.
+sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
+   Add UbuntuGIS-unstable repository &amp;amp; update sudo add-apt-repository ppa:ubuntugis/ppa sudo apt-get update   Install PostGIS sudo apt install postgis postgresql-12.1-postgis-3.0.0  replace the postgresql version with your own</description>
+    </item>
+    
+  </channel>
+</rss>

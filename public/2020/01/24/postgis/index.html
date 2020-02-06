@@ -4,22 +4,20 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>PostGIS - Installation &middot; Mubasser Kamal</title>
-        <meta name="description" content="Update APT package list and upgrade system sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &ldquo;yes&rdquo; as answer to all prompts and run non-interactively
- ">
+        <meta name="description" content="setting up PostGIS in Linux/Ubuntu">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.62.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="PostGIS - Installation">
-<meta property="og:description" content="Update APT package list and upgrade system sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &ldquo;yes&rdquo; as answer to all prompts and run non-interactively
- ">
+<meta property="og:description" content="setting up PostGIS in Linux/Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:url" content="/2020/01/24/postgis/">
-		<link rel="stylesheet" href="css/dracula.css" rel="stylesheet" id="theme-stylesheet">
-		<script src="js/highlight.pack.js"></script>
+		<link rel="stylesheet" href="../../../../css/dracula.css" rel="stylesheet" id="theme-stylesheet">
+		<script src="../../../../js/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
-        <link rel="stylesheet" href="dist/styles.css">
+        <link rel="stylesheet" href="../../../../dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         
@@ -36,10 +34,10 @@
                     <div class="site-title-wrapper">
                         
                             <h1 class="site-title">
-                                <a title="Mobu&#39;s Journal" href="">Mobu&#39;s Journal</a>
+                                <a title="Mobu&#39;s Journal" href="../../../../">Mobu&#39;s Journal</a>
                             </h1>
                         
-                        <a class="button-square" href="index.xml"><i class="fa fa-rss"></i></a>
+                        <a class="button-square" href="../../../../index.xml"><i class="fa fa-rss"></i></a>
                         
                         
                         
@@ -57,7 +55,7 @@
                     <ul class="site-nav">
                         
     <li class="site-nav-item">
-        <a title="Blog" href="../../../../">Blog</a>
+        <a title="Categories" href="../../../../category">Categories</a>
     </li>
 
     <li class="site-nav-item">
@@ -66,6 +64,10 @@
 
     <li class="site-nav-item">
         <a title="About" href="../../../../page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Tags" href="../../../../tags/">Tags</a>
     </li>
 
                     </ul>
@@ -79,12 +81,14 @@
         <header class="post-header">
     <h1 class="post-title" itemprop="name headline">PostGIS - Installation</h1>
     
+        <p class="post-description" itemprop="description">setting up PostGIS in Linux/Ubuntu</p>
+    
     <p class="post-date post-line">
         <span>Published <time datetime="2020-01-24" itemprop="datePublished">Fri, Jan 24, 2020</time></span>
         <span>by</span>
         <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
             <span itemprop="name">
-                <a href="#" itemprop="url" rel="author">Mubasser Kamal</a>
+                <a href="#" itemprop="url" rel="author">Mobu</a>
             </span>
         </span>
     </p>
@@ -94,16 +98,71 @@
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <h3 id="update-apt-package-list-and-upgrade-system">Update APT package list and upgrade system</h3>
+    <h1 id="installation">Installation</h1>
+<ol>
+<li>
+<h4 id="update-apt-package-list-and-upgrade-system">Update APT package list and upgrade system</h4>
+<p><em><em>Prerequisite</em></em>: PostgreSQL will need to be installed and configured beforehand.</p>
 <pre><code>sudo apt update
 sudo apt -y upgrade
 </code></pre><blockquote>
 <p><em>-y</em> switch basically means automatic yes to prompts; assume &ldquo;yes&rdquo; as answer to all prompts and run non-interactively</p>
 </blockquote>
+</li>
+<li>
+<h4 id="add-ubuntugis-unstable-repository--update">Add UbuntuGIS-unstable repository &amp; update</h4>
+<pre><code>sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt-get update
+</code></pre></li>
+<li>
+<h4 id="install-postgis">Install PostGIS</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install postgis postgresql-12.1-postgis-3.0.0
+</code></pre></div><blockquote>
+<p>replace the postgresql version with your own</p>
+</blockquote>
+</li>
+</ol>
+<p>If everything goes alright, PostGIS will be installed on your system. However, you do need to activate PostGIS features on a database
+before you can store spatial data.</p>
+<h1 id="enabling-postgis">Enabling PostGIS</h1>
+<ol>
+<li>Switch to Postgres user
+<pre><code>sudo -i -u postgres
+</code></pre></li>
+<li>Create test user and database
+<pre><code>createuser postgis_test
+createdb postgis_db -O postgis_test
+</code></pre></li>
+<li>Connect to the test database
+<pre><code>psql -d postgis_db
+</code></pre></li>
+<li>Enable the PostGIS extension on the database
+<pre><code>CREATE EXTENSION postgis;
+</code></pre></li>
+<li>Verify PostGIS is working
+<pre><code>SELECT PostGIS_version();
+</code></pre></li>
+</ol>
 
 </div>
 
         <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="../../../../tags/postgres/">postgres</a>, 
+            
+                <a href="../../../../tags/postgresql/">postgresql</a>, 
+            
+                <a href="../../../../tags/install-postgres/">install postgres</a>, 
+            
+                <a href="../../../../tags/database/">database</a>, 
+            
+                <a href="../../../../tags/postgis/">postgis</a>
+            
+        </p>
     
 
     <div class="share">
@@ -145,7 +204,7 @@ sudo apt -y upgrade
             <div class="container">
                 <div class="site-title-wrapper">
                     <h1 class="site-title">
-                        <a title="Mobu&#39;s Journal" href="">Mobu&#39;s Journal</a>
+                        <a title="Mobu&#39;s Journal" href="../../../../">Mobu&#39;s Journal</a>
                     </h1>
                     <a class="button-square button-jump-top js-jump-top" href="#">
                         <i class="fa fa-angle-up"></i>
@@ -162,14 +221,14 @@ sudo apt -y upgrade
             </div>
         </footer>
 
-        <script src="js/jquery-1.11.3.min.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
+        <script src="../../../../js/jquery-1.11.3.min.js"></script>
+        <script src="../../../../js/jquery.fitvids.js"></script>
         
         
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         
         
-        <script src="js/scripts.js"></script>
+        <script src="../../../../js/scripts.js"></script>
     </body>
 </html>
 

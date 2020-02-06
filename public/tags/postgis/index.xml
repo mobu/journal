@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>postgis on Mobu&#39;s Journal</title>
+    <link>/tags/postgis/</link>
+    <description>Recent content in postgis on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Fri, 24 Jan 2020 22:20:35 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/postgis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PostGIS - Installation</title>
+      <link>/2020/01/24/postgis/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgis/</guid>
+      <description>Installation   Update APT package list and upgrade system Prerequisite: PostgreSQL will need to be installed and configured beforehand.
+sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
+   Add UbuntuGIS-unstable repository &amp;amp; update sudo add-apt-repository ppa:ubuntugis/ppa sudo apt-get update   Install PostGIS sudo apt install postgis postgresql-12.1-postgis-3.0.0  replace the postgresql version with your own</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL - Management</title>
+      <link>/2020/01/24/postgres_management/</link>
+      <pubDate>Fri, 24 Jan 2020 21:24:09 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgres_management/</guid>
+      <description>Service management sudo service postgresql stop sudo service postgresql start sudo service postgresql restart Enter the database you created psql testdb Creating a table CREATE TABLE [IF NOT EXISTS] table_name ( column_name1 col_type (field_length) column_constraints, column_name2 col_type (field_length), column_name3 col_type (field_length) ); Listing information     Command Action     \l list all databases   \dt display all tables in current schema   \du list all users   \d list all the tables in the database   \d+ table_name retrieve detailed information about a table     Roles     Command Action     \du username list a username if present   create role rolename create a role with an existing username   create role rolename noinherit login password passsword; Create a role with username and password   set role test; change role for current session to test   grant role2 to role1; Allow test1 to set its role as role2     </description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL - Setup &amp; Installation</title>
+      <link>/2020/01/24/postgres/</link>
+      <pubDate>Fri, 24 Jan 2020 12:59:48 -0600</pubDate>
+      
+      <guid>/2020/01/24/postgres/</guid>
+      <description>Installing PostgreSQL Prerequisite: Make sure to have Ubuntu set up first.
+ Using apt package manager, install Postgres (it&#39;s in the default Ubuntu repo).  $ sudo apt update $ sudo apt install postgresql postgresql-contrib Postgres associates roles with a matching Unix/Linux system account. So let&#39;s Switch over to the postgres account on your server by typing:  $ sudo -i -u postgres  postgres: this user is the superuser for the PostgreSQL instance</description>
+    </item>
+    
+  </channel>
+</rss>

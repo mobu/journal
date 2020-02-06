@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Mobu&#39;s Journal</title>
+    <link>/tags/python/</link>
+    <description>Recent content in python on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Tue, 28 Jan 2020 15:00:08 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python - Virtual Environment Setup</title>
+      <link>/2020/01/28/python-virtualenv/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/2020/01/28/python-virtualenv/</guid>
+      <description>Python Virtual Environment   Creating a virtual environment in a new folder
+python -m venv FolderName ⏎  Creating virtual environment inside an existent folder. Navigate to the folder inside where you want to create the environment
+python -m venv . ⏎Notice the dot at the end of the statement. It basically says &amp;ldquo;here&amp;rdquo;
+ The -m stands for module-name. venv is a built-in Python module that helps with virtual environments</description>
+    </item>
+    
+  </channel>
+</rss>

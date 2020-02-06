@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo blog on Mobu&#39;s Journal</title>
+    <link>/tags/hugo-blog/</link>
+    <description>Recent content in hugo blog on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Tue, 14 Jan 2020 13:08:12 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/hugo-blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo Tutorial</title>
+      <link>/2020/01/14/hugo-tutorial/</link>
+      <pubDate>Tue, 14 Jan 2020 13:08:12 -0600</pubDate>
+      
+      <guid>/2020/01/14/hugo-tutorial/</guid>
+      <description>For Windows, download from https://github.com/gohugoio/hugo/releases
+  Extract the zip file in any folder.
+  (Optional) You can add the folder path to the PATH environment variable.
+ Click on the Windows search button and type env    Click the Environment Variables&amp;hellip; button    Double-click the Path variable (you can also select Path and click on the Edit button)    Add the full path of the Hugo directory (Hugo.</description>
+    </item>
+    
+  </channel>
+</rss>

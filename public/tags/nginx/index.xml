@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on Mobu&#39;s Journal</title>
+    <link>/tags/nginx/</link>
+    <description>Recent content in nginx on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Tue, 04 Feb 2020 13:54:46 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let&#39;s Encrypt - guide</title>
+      <link>/2020/02/04/letsencrypt/</link>
+      <pubDate>Tue, 04 Feb 2020 13:54:46 -0600</pubDate>
+      
+      <guid>/2020/02/04/letsencrypt/</guid>
+      <description>Basics of Let&#39;s Encrypt  open and automated certificate authority Let&#39;s Ecnrypt issues free SSL/TLS certificates Certbot - can automatically configure TLS/SSL on both Apache and Nginx web servers   What is a Certificate Authority?
+Certificate authorities (CAs) are entities that cryptographically sign TLS/SSL certificates to vouch for their authenticity.
+ 3-part process  Install Certbot on your server Run Certbot with a command to obtain your SSL/TLS certificate and save it on your server.</description>
+    </item>
+    
+    <item>
+      <title>Nginx Security</title>
+      <link>/2020/01/29/nginx_security/</link>
+      <pubDate>Wed, 29 Jan 2020 11:17:44 -0600</pubDate>
+      
+      <guid>/2020/01/29/nginx_security/</guid>
+      <description>1. Turn On SELinux 2. Linux /etc/sysctl.conf Hardening Using sysctl, you can modify the kernel parameters without recompiling the kernel or rebooting the machine.
+# Avoid a smurf attacknet.ipv4.icmp_echo_ignore_broadcasts = 1# Turn on protection for bad icmp error messagesnet.ipv4.icmp_ignore_bogus_error_responses = 1# Turn on syncookies for SYN flood attack protectionnet.ipv4.tcp_syncookies = 1# Turn on and log spoofed, source routed, and redirect packetsnet.ipv4.conf.all.log_martians = 1net.</description>
+    </item>
+    
+    <item>
+      <title>Nginx - Virtualhost</title>
+      <link>/2020/01/29/nginx_virtualhost/</link>
+      <pubDate>Wed, 29 Jan 2020 00:28:39 -0600</pubDate>
+      
+      <guid>/2020/01/29/nginx_virtualhost/</guid>
+      <description>Setting up a Reverse-Proxy with Nginx and docker-compose URL: https://www.domysee.com/blogposts/reverse-proxy-nginx-docker-compose</description>
+    </item>
+    
+    <item>
+      <title>Nginx - notes</title>
+      <link>/2020/01/28/nginx-docker/</link>
+      <pubDate>Tue, 28 Jan 2020 01:09:50 -0600</pubDate>
+      
+      <guid>/2020/01/28/nginx-docker/</guid>
+      <description>Main commands [sudo] nginx -s signal (while an nginx instance is running)
+   Signal Action     stop fast shutdown   quit graceful shutdown (waits for workers)   reload reload the configuration file   reopen reopen the log files    test nginx configuration changes
+# nginx -tthe configuration file /usr/local/nginx/conf/nginx.conf syntax is okconfiguration file /usr/local/nginx/conf/nginx.conf test is successful Configuration files # nginx server configuration directory/usr/local/nginx/conf//etc/nginx/# main configuration file/usr/local/nginx/conf/nginx.</description>
+    </item>
+    
+  </channel>
+</rss>

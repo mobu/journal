@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vpn on Mobu&#39;s Journal</title>
+    <link>/tags/vpn/</link>
+    <description>Recent content in vpn on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Thu, 30 Jan 2020 12:00:24 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Wireguard - Setup</title>
+      <link>/2020/01/30/wireguard/</link>
+      <pubDate>Thu, 30 Jan 2020 12:00:24 -0600</pubDate>
+      
+      <guid>/2020/01/30/wireguard/</guid>
+      <description>Link: https://www.ckn.io/blog/2017/11/14/wireguard-vpn-typical-setup/
+Steps  Install WireGuard on the VPN server. Generate server and client keys. Generate server and client configs. Enable WireGuard interface on the server. Enable IP forwarding on the server. Configure firewall rules on the server. Configure DNS. Set up Wireguard on clients.  1. Install WireGuard on the VPN server add-apt-repository ppa:wireguard/wireguardapt-get updateapt-get install wireguard-dkms wireguard-tools linux-headers-$(uname -r)2. </description>
+    </item>
+    
+  </channel>
+</rss>

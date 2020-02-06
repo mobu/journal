@@ -3,7 +3,182 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/02/04/letsencrypt/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/letsencrypt/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/nginx/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/30/unbound_dns/</loc>
+    <lastmod>2020-01-30T16:22:09-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/</loc>
+    <lastmod>2020-01-30T12:00:24-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/security/</loc>
+    <lastmod>2020-01-30T12:00:24-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/vpn/</loc>
+    <lastmod>2020-01-30T12:00:24-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/wireguard/</loc>
+    <lastmod>2020-01-30T12:00:24-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/30/wireguard/</loc>
+    <lastmod>2020-01-30T12:00:24-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/nginx/</loc>
+    <lastmod>2020-01-29T11:17:44-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/29/nginx_security/</loc>
+    <lastmod>2020-01-29T11:17:44-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/security/</loc>
+    <lastmod>2020-01-29T11:17:44-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/web-server/</loc>
+    <lastmod>2020-01-29T11:17:44-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/29/nginx_virtualhost/</loc>
+    <lastmod>2020-01-29T00:28:39-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/vhost/</loc>
+    <lastmod>2020-01-29T00:28:39-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/virtualhost/</loc>
+    <lastmod>2020-01-29T00:28:39-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/29/nginx_proxypass/</loc>
+    <lastmod>2020-01-29T00:18:00-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/python/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/28/python-virtualenv/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python-3/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python3/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/venv/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/virtual-environment/</loc>
+    <lastmod>2020-01-28T15:00:08-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/basic-nginx/</loc>
+    <lastmod>2020-01-28T01:09:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/contexts/</loc>
+    <lastmod>2020-01-28T01:09:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/directives/</loc>
+    <lastmod>2020-01-28T01:09:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/01/28/nginx-docker/</loc>
+    <lastmod>2020-01-28T01:09:50-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/database/</loc>
+    <lastmod>2020-01-24T22:20:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/install-postgres/</loc>
+    <lastmod>2020-01-24T22:20:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/postgis/</loc>
+    <lastmod>2020-01-24T22:20:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/postgis/</loc>
     <lastmod>2020-01-24T22:20:35-06:00</lastmod>
   </url>
   
@@ -13,8 +188,18 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/tags/postgres/</loc>
     <lastmod>2020-01-24T22:20:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/postgresql/</loc>
+    <lastmod>2020-01-24T22:20:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/postgresql/</loc>
+    <lastmod>2020-01-24T21:24:09-06:00</lastmod>
   </url>
   
   <url>
@@ -38,17 +223,33 @@
   </url>
   
   <url>
+    <loc>/category/hugo/</loc>
+    <lastmod>2020-01-14T13:08:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/hugo/</loc>
+    <lastmod>2020-01-14T13:08:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/hugo-blog/</loc>
+    <lastmod>2020-01-14T13:08:12-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2020/01/14/hugo-tutorial/</loc>
+    <lastmod>2020-01-14T13:08:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/static-site/</loc>
     <lastmod>2020-01-14T13:08:12-06:00</lastmod>
   </url>
   
   <url>
     <loc>/about/</loc>
     <lastmod>2020-01-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
   </url>
   
 </urlset>

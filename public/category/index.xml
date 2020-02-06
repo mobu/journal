@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Category on Mobu&#39;s Journal</title>
+    <link>/category/</link>
+    <description>Recent content in Category on Mobu&#39;s Journal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Thu, 30 Jan 2020 12:00:24 -0600</lastBuildDate>
+    
+	<atom:link href="/category/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>security</title>
+      <link>/category/security/</link>
+      <pubDate>Thu, 30 Jan 2020 12:00:24 -0600</pubDate>
+      
+      <guid>/category/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>/category/nginx/</link>
+      <pubDate>Wed, 29 Jan 2020 11:17:44 -0600</pubDate>
+      
+      <guid>/category/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/category/python/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/category/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PostGIS</title>
+      <link>/category/postgis/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/category/postgis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL</title>
+      <link>/category/postgresql/</link>
+      <pubDate>Fri, 24 Jan 2020 21:24:09 -0600</pubDate>
+      
+      <guid>/category/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>/category/hugo/</link>
+      <pubDate>Tue, 14 Jan 2020 13:08:12 -0600</pubDate>
+      
+      <guid>/category/hugo/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

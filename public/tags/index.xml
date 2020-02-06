@@ -7,9 +7,235 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Mubasser Kamal</copyright>
+    <lastBuildDate>Tue, 04 Feb 2020 13:54:46 -0600</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>docker</title>
+      <link>/tags/docker/</link>
+      <pubDate>Tue, 04 Feb 2020 13:54:46 -0600</pubDate>
+      
+      <guid>/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>letsencrypt</title>
+      <link>/tags/letsencrypt/</link>
+      <pubDate>Tue, 04 Feb 2020 13:54:46 -0600</pubDate>
+      
+      <guid>/tags/letsencrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>/tags/nginx/</link>
+      <pubDate>Tue, 04 Feb 2020 13:54:46 -0600</pubDate>
+      
+      <guid>/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vpn</title>
+      <link>/tags/vpn/</link>
+      <pubDate>Thu, 30 Jan 2020 12:00:24 -0600</pubDate>
+      
+      <guid>/tags/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wireguard</title>
+      <link>/tags/wireguard/</link>
+      <pubDate>Thu, 30 Jan 2020 12:00:24 -0600</pubDate>
+      
+      <guid>/tags/wireguard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>/tags/security/</link>
+      <pubDate>Wed, 29 Jan 2020 11:17:44 -0600</pubDate>
+      
+      <guid>/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web server</title>
+      <link>/tags/web-server/</link>
+      <pubDate>Wed, 29 Jan 2020 11:17:44 -0600</pubDate>
+      
+      <guid>/tags/web-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vhost</title>
+      <link>/tags/vhost/</link>
+      <pubDate>Wed, 29 Jan 2020 00:28:39 -0600</pubDate>
+      
+      <guid>/tags/vhost/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualhost</title>
+      <link>/tags/virtualhost/</link>
+      <pubDate>Wed, 29 Jan 2020 00:28:39 -0600</pubDate>
+      
+      <guid>/tags/virtualhost/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python 3</title>
+      <link>/tags/python-3/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/tags/python-3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python3</title>
+      <link>/tags/python3/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/tags/python3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>venv</title>
+      <link>/tags/venv/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/tags/venv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtual environment</title>
+      <link>/tags/virtual-environment/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/tags/virtual-environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>basic nginx</title>
+      <link>/tags/basic-nginx/</link>
+      <pubDate>Tue, 28 Jan 2020 01:09:50 -0600</pubDate>
+      
+      <guid>/tags/basic-nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>contexts</title>
+      <link>/tags/contexts/</link>
+      <pubDate>Tue, 28 Jan 2020 01:09:50 -0600</pubDate>
+      
+      <guid>/tags/contexts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>directives</title>
+      <link>/tags/directives/</link>
+      <pubDate>Tue, 28 Jan 2020 01:09:50 -0600</pubDate>
+      
+      <guid>/tags/directives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>database</title>
+      <link>/tags/database/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>install postgres</title>
+      <link>/tags/install-postgres/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/tags/install-postgres/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgis</title>
+      <link>/tags/postgis/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/tags/postgis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgres</title>
+      <link>/tags/postgres/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/tags/postgres/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>/tags/postgresql/</link>
+      <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
+      
+      <guid>/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>/tags/hugo/</link>
+      <pubDate>Tue, 14 Jan 2020 13:08:12 -0600</pubDate>
+      
+      <guid>/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo blog</title>
+      <link>/tags/hugo-blog/</link>
+      <pubDate>Tue, 14 Jan 2020 13:08:12 -0600</pubDate>
+      
+      <guid>/tags/hugo-blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>static site</title>
+      <link>/tags/static-site/</link>
+      <pubDate>Tue, 14 Jan 2020 13:08:12 -0600</pubDate>
+      
+      <guid>/tags/static-site/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

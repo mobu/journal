@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Nginx Security &middot; Mubasser Kamal</title>
+        <meta name="description" content="Security best practices for nginx">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.62.2" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Nginx Security">
+<meta property="og:description" content="Security best practices for nginx">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/2020/01/29/nginx_security/">
+		<link rel="stylesheet" href="../../../../css/dracula.css" rel="stylesheet" id="theme-stylesheet">
+		<script src="../../../../js/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+        <link rel="stylesheet" href="../../../../dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Mobu&#39;s Journal" href="../../../../">Mobu&#39;s Journal</a>
+                            </h1>
+                        
+                        <a class="button-square" href="../../../../index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/mobu" rel="me">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Categories" href="../../../../category">Categories</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="../../../../page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="../../../../page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Tags" href="../../../../tags/">Tags</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Nginx Security</h1>
+    
+        <p class="post-description" itemprop="description">Security best practices for nginx</p>
+    
+    <p class="post-date post-line">
+        <span>Published <time datetime="2020-01-29" itemprop="datePublished">Wed, Jan 29, 2020</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Mobu</a>
+            </span>
+        </span>
+    </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <h3 id="1-turn-on-selinux">1. Turn On SELinux</h3>
+<h3 id="2-linux-etcsysctlconf-hardening">2. Linux /etc/sysctl.conf Hardening</h3>
+<p>Using sysctl, you can modify the kernel parameters without recompiling the kernel or rebooting the machine.</p>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># Avoid a smurf attack
+</span><span class="c1"></span><span class="k">net.ipv4.icmp_echo_ignore_broadcasts</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># Turn on protection for bad icmp error messages
+</span><span class="c1"></span><span class="s">net.ipv4.icmp_ignore_bogus_error_responses</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># Turn on syncookies for SYN flood attack protection
+</span><span class="c1"></span><span class="s">net.ipv4.tcp_syncookies</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># Turn on and log spoofed, source routed, and redirect packets
+</span><span class="c1"></span><span class="s">net.ipv4.conf.all.log_martians</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="s">net.ipv4.conf.default.log_martians</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># No source routed packets here
+</span><span class="c1"></span><span class="s">net.ipv4.conf.all.accept_source_route</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv4.conf.default.accept_source_route</span> <span class="p">=</span> <span class="mi">0</span>
+ 
+<span class="c1"># Turn on reverse path filtering
+</span><span class="c1"></span><span class="s">net.ipv4.conf.all.rp_filter</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="s">net.ipv4.conf.default.rp_filter</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># Make sure no one can alter the routing tables
+</span><span class="c1"></span><span class="s">net.ipv4.conf.all.accept_redirects</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv4.conf.default.accept_redirects</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv4.conf.all.secure_redirects</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv4.conf.default.secure_redirects</span> <span class="p">=</span> <span class="mi">0</span>
+ 
+<span class="c1"># Don&#39;t act as a router
+</span><span class="c1"></span><span class="s">net.ipv4.ip_forward</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv4.conf.all.send_redirects</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv4.conf.default.send_redirects</span> <span class="p">=</span> <span class="mi">0</span>
+ 
+ 
+<span class="c1"># Turn on execshild
+</span><span class="c1"></span><span class="s">kernel.exec-shield</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="s">kernel.randomize_va_space</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># Tuen IPv6
+</span><span class="c1"></span><span class="s">net.ipv6.conf.default.router_solicitations</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv6.conf.default.accept_ra_rtr_pref</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv6.conf.default.accept_ra_pinfo</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv6.conf.default.accept_ra_defrtr</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv6.conf.default.autoconf</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv6.conf.default.dad_transmits</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="s">net.ipv6.conf.default.max_addresses</span> <span class="p">=</span> <span class="mi">1</span>
+ 
+<span class="c1"># Optimization for port usefor LBs
+</span><span class="c1"></span><span class="c1"># Increase system file descriptor limit
+</span><span class="c1"></span><span class="s">fs.file-max</span> <span class="p">=</span> <span class="mi">65535</span>
+ 
+<span class="c1"># Allow for more PIDs (to reduce rollover problems); may break some programs 32768
+</span><span class="c1"></span><span class="s">kernel.pid_max</span> <span class="p">=</span> <span class="mi">65536</span>
+ 
+<span class="c1"># Increase system IP port limits
+</span><span class="c1"></span><span class="s">net.ipv4.ip_local_port_range</span> <span class="p">=</span> <span class="mi">2000</span> <span class="mi">65000</span>
+ 
+<span class="c1"># Increase TCP max buffer size setable using setsockopt()
+</span><span class="c1"></span><span class="s">net.ipv4.tcp_rmem</span> <span class="p">=</span> <span class="mi">4096</span> <span class="mi">87380</span> <span class="mi">8388608</span>
+<span class="s">net.ipv4.tcp_wmem</span> <span class="p">=</span> <span class="mi">4096</span> <span class="mi">87380</span> <span class="mi">8388608</span>
+ 
+<span class="c1"># Increase Linux auto tuning TCP buffer limits
+</span><span class="c1"></span><span class="c1"># min, default, and max number of bytes to use
+</span><span class="c1"></span><span class="c1"># set max to at least 4MB, or higher if you use very high BDP paths
+</span><span class="c1"></span><span class="c1"># Tcp Windows etc
+</span><span class="c1"></span><span class="s">net.core.rmem_max</span> <span class="p">=</span> <span class="mi">8388608</span>
+<span class="s">net.core.wmem_max</span> <span class="p">=</span> <span class="mi">8388608</span>
+<span class="s">net.core.netdev_max_backlog</span> <span class="p">=</span> <span class="mi">5000</span>
+<span class="s">net.ipv4.tcp_window_scaling</span> <span class="p">=</span> <span class="mi">1</span>
+</code></pre></div><h3 id="3-ufw-firewall">3. UFW Firewall</h3>
+<p>We want ssh and Nginx to work. Nginx Full allows for both http (80) and https (443) connections.</p>
+<pre><code>sudo ufw allow ssh
+
+sudo ufw allow 'Nginx Full'
+</code></pre><p>Enable the UFW firewall</p>
+<pre><code>sudo ufw enable
+</code></pre><p>Remove Nginx Default</p>
+<pre><code>rm /etc/nginx/sites-enabled/default
+</code></pre><h3 id="4-controlling-buffer-overflow-attacks">4. Controlling Buffer Overflow Attacks</h3>
+<p>Edit nginx.conf and set the buffer size limitations for all clients.</p>
+<pre><code>nano /usr/local/nginx/conf/nginx.conf
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># Edit and set the buffer size limitations for all clients as follows
+</span><span class="c1"></span>
+ <span class="c1">## Start: Size Limits &amp; Buffer Overflows ##
+</span><span class="c1"></span>  <span class="k">client_body_buffer_size</span>  <span class="s">1K</span><span class="p">;</span>
+  <span class="k">client_header_buffer_size</span> <span class="mi">1k</span><span class="p">;</span>
+  <span class="k">client_max_body_size</span> <span class="mi">1k</span><span class="p">;</span>
+  <span class="k">large_client_header_buffers</span> <span class="mi">2</span> <span class="mi">1k</span><span class="p">;</span>
+ <span class="c1">## END: Size Limits &amp; Buffer Overflows ##
+</span></code></pre></div><h3 id="5-control-simultaneous-connections">5. Control Simultaneous Connections</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1">### Directive describes the zone, in which the session states are stored i.e. store in slimits. ###
+</span><span class="c1"></span><span class="c1">### 1m can handle 32000 sessions with 32 bytes/session, set to 5m x 32000 session ###
+</span><span class="c1"></span>       <span class="k">limit_zone</span> <span class="s">slimits</span> <span class="nv">$binary_remote_addr</span> <span class="mi">5m</span><span class="p">;</span>
+ 
+<span class="c1">### Control maximum number of simultaneous connections for one session i.e. ###
+</span><span class="c1"></span><span class="c1">### restricts the amount of connections from a single ip address ###
+</span><span class="c1"></span>        <span class="k">limit_conn</span> <span class="s">slimits</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div><h3 id="6-allow-access-to-our-domain-only">6. Allow Access To Our Domain Only</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1">## Only requests to our Host are allowed i.e. nixcraft.in, images.nixcraft.in and www.nixcraft.in
+</span><span class="c1"></span>      <span class="k">if</span> <span class="s">(</span><span class="nv">$host</span> <span class="s">!~</span> <span class="s">^(nixcraft.in|www.nixcraft.in|images.nixcraft.in)</span>$ <span class="s">)</span> <span class="p">{</span>
+         <span class="kn">return</span> <span class="mi">444</span><span class="p">;</span>
+      <span class="p">}</span>
+<span class="c1">##
+</span></code></pre></div><blockquote>
+<p>You must only allow configured virtual domain or reverse proxy requests. You don’t want to display request using an IP address</p>
+</blockquote>
+<h3 id="7-limit-available-methods">7. Limit Available Methods</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1">## Only allow these request methods ##
+</span><span class="c1"></span>     <span class="k">if</span> <span class="s">(</span><span class="nv">$request_method</span> <span class="s">!~</span> <span class="s">^(GET|HEAD|POST)</span>$ <span class="s">)</span> <span class="p">{</span>
+         <span class="kn">return</span> <span class="mi">444</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="c1">## Do not accept DELETE, SEARCH and other methods ##
+</span></code></pre></div><h3 id="8-deny-certain-user-agents">8. Deny Certain User-Agents</h3>
+<pre><code>## Block download agents ##
+     if ($http_user_agent ~* LWP::Simple|BBBike|wget) {
+            return 403;
+     }
+##
+</code></pre><h3 id="9-limiting-directory-access">9. Limiting Directory Access</h3>
+<ol>
+<li>By IP Address
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/docs/</span> <span class="p">{</span>
+  <span class="c1">## block one workstation
+</span><span class="c1"></span>  <span class="kn">deny</span>    <span class="mi">192</span><span class="s">.168.1.1</span><span class="p">;</span>
+
+  <span class="c1">## allow anyone in 192.168.1.0/24
+</span><span class="c1"></span>  <span class="kn">allow</span>   <span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span>
+
+  <span class="c1">## drop rest of the world
+</span><span class="c1"></span>  <span class="kn">deny</span>    <span class="s">all</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>By password
+<pre><code># mkdir /usr/local/nginx/conf/.htpasswd/
+# htpasswd -c /usr/local/nginx/conf/.htpasswd/passwd vivek
+</code></pre></li>
+</ol>
+<h3 id="10-http-headers">10. HTTP Headers</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># X-Frame
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">SAMEORIGIN</span><span class="p">;</span>
+
+<span class="c1"># X-Content-Type-Options
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+
+<span class="c1"># X-XSS-Protection
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">&#34;1</span><span class="p">;</span> <span class="k">mode=block&#34;</span><span class="p">;</span>
+
+<span class="c1"># Strict-Transport-Security
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span> <span class="k">includeSubDomains&#34;</span> <span class="s">always</span><span class="p">;</span>
+
+<span class="c1"># Content-Security-Policy
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">Content-Security-Policy</span> <span class="s">&#34;default-src</span> <span class="s">&#39;self&#39;</span><span class="p">;</span> <span class="k">script-src</span> <span class="s">&#39;self&#39;</span> <span class="s">&#39;unsafe-inline&#39;</span> <span class="s">&#39;unsafe-eval&#39;</span><span class="p">;</span> <span class="k">object-src</span> <span class="s">&#39;none&#39;&#34;</span><span class="p">;</span>
+
+<span class="c1"># X-Content-Type-Options
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+
+<span class="c1"># Access-Control-Allow-Origin
+</span><span class="c1"></span><span class="k">//</span> <span class="s">UNDER</span> <span class="s">CONSTRUCTION</span>
+<span class="s">location</span> <span class="p">~</span> <span class="sr">\.(ttf|ttc|otf|eot|woff|font.css|css|js|gif|png|jpe?g|svg|svgz|ico|webp)$</span> <span class="p">{</span>
+    <span class="kn">add_header</span> <span class="s">Access-Control-Allow-Origin</span> <span class="s">&#34;*&#34;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="11-turn-off-sending-server-token">11. Turn off sending Server token</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># don&#39;t send the nginx version number in error pages and Server header
+</span><span class="c1"></span><span class="k">server_tokens</span> <span class="no">off</span><span class="p">;</span>
+</code></pre></div><h3 id="12-force-https">12. Force HTTPS</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+
+    <span class="kn">server_name</span> <span class="s">foo.com</span><span class="p">;</span>
+    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://foo.com</span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># Our sites/apps can then be set to listen on port 443 for SSL connections only.
+</span><span class="c1"></span>
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">bar.com</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="ssl-configuration">SSL Configuration</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">ssl_protocols</span> <span class="s">TLSv1.2</span> <span class="s">TLSv1.3</span><span class="p">;</span>
+
+<span class="k">ssl_ciphers</span> <span class="s">ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384</span><span class="p">;</span>
+
+<span class="k">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
+<span class="k">ssl_session_cache</span> <span class="s">shared:SSL:10m</span><span class="p">;</span>
+</code></pre></div><p>Sources:
+<a href="https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html">https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html</a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="../../../../tags/nginx/">nginx</a>, 
+            
+                <a href="../../../../tags/security/">security</a>, 
+            
+                <a href="../../../../tags/web-server/">web server</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Nginx%20Security&url=%2f2020%2f01%2f29%2fnginx_security%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2020%2f01%2f29%2fnginx_security%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2020%2f01%2f29%2fnginx_security%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Mobu&#39;s Journal" href="../../../../">Mobu&#39;s Journal</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2020 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="../../../../js/jquery-1.11.3.min.js"></script>
+        <script src="../../../../js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="../../../../js/scripts.js"></script>
+    </body>
+</html>
+

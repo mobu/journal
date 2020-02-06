@@ -7,10 +7,94 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Mubasser Kamal</copyright>
-    <lastBuildDate>Fri, 24 Jan 2020 22:20:35 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 04 Feb 2020 13:54:46 -0600</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Let&#39;s Encrypt - guide</title>
+      <link>/2020/02/04/letsencrypt/</link>
+      <pubDate>Tue, 04 Feb 2020 13:54:46 -0600</pubDate>
+      
+      <guid>/2020/02/04/letsencrypt/</guid>
+      <description>Basics of Let&#39;s Encrypt  open and automated certificate authority Let&#39;s Ecnrypt issues free SSL/TLS certificates Certbot - can automatically configure TLS/SSL on both Apache and Nginx web servers   What is a Certificate Authority?
+Certificate authorities (CAs) are entities that cryptographically sign TLS/SSL certificates to vouch for their authenticity.
+ 3-part process  Install Certbot on your server Run Certbot with a command to obtain your SSL/TLS certificate and save it on your server.</description>
+    </item>
+    
+    <item>
+      <title>Unbound DNS Setup</title>
+      <link>/2020/01/30/unbound_dns/</link>
+      <pubDate>Thu, 30 Jan 2020 16:22:09 -0600</pubDate>
+      
+      <guid>/2020/01/30/unbound_dns/</guid>
+      <description>Source: https://freedif.org/unbound-your-own-dns-server</description>
+    </item>
+    
+    <item>
+      <title>Wireguard - Setup</title>
+      <link>/2020/01/30/wireguard/</link>
+      <pubDate>Thu, 30 Jan 2020 12:00:24 -0600</pubDate>
+      
+      <guid>/2020/01/30/wireguard/</guid>
+      <description>Link: https://www.ckn.io/blog/2017/11/14/wireguard-vpn-typical-setup/
+Steps  Install WireGuard on the VPN server. Generate server and client keys. Generate server and client configs. Enable WireGuard interface on the server. Enable IP forwarding on the server. Configure firewall rules on the server. Configure DNS. Set up Wireguard on clients.  1. Install WireGuard on the VPN server add-apt-repository ppa:wireguard/wireguardapt-get updateapt-get install wireguard-dkms wireguard-tools linux-headers-$(uname -r)2. </description>
+    </item>
+    
+    <item>
+      <title>Nginx Security</title>
+      <link>/2020/01/29/nginx_security/</link>
+      <pubDate>Wed, 29 Jan 2020 11:17:44 -0600</pubDate>
+      
+      <guid>/2020/01/29/nginx_security/</guid>
+      <description>1. Turn On SELinux 2. Linux /etc/sysctl.conf Hardening Using sysctl, you can modify the kernel parameters without recompiling the kernel or rebooting the machine.
+# Avoid a smurf attacknet.ipv4.icmp_echo_ignore_broadcasts = 1# Turn on protection for bad icmp error messagesnet.ipv4.icmp_ignore_bogus_error_responses = 1# Turn on syncookies for SYN flood attack protectionnet.ipv4.tcp_syncookies = 1# Turn on and log spoofed, source routed, and redirect packetsnet.ipv4.conf.all.log_martians = 1net.</description>
+    </item>
+    
+    <item>
+      <title>Nginx - Virtualhost</title>
+      <link>/2020/01/29/nginx_virtualhost/</link>
+      <pubDate>Wed, 29 Jan 2020 00:28:39 -0600</pubDate>
+      
+      <guid>/2020/01/29/nginx_virtualhost/</guid>
+      <description>Setting up a Reverse-Proxy with Nginx and docker-compose URL: https://www.domysee.com/blogposts/reverse-proxy-nginx-docker-compose</description>
+    </item>
+    
+    <item>
+      <title>Nginx - HTTP Proxy Pass</title>
+      <link>/2020/01/29/nginx_proxypass/</link>
+      <pubDate>Wed, 29 Jan 2020 00:18:00 -0600</pubDate>
+      
+      <guid>/2020/01/29/nginx_proxypass/</guid>
+      <description>Basic HTTP Proxy Pass The proxy_pass directive sets the address of the proxied server and the URI to which location will be mapped.
+The proxy_pass directive is mainly found in location contexts.
+  When a request matches a location with a proxy_pass directive inside, the request is forwarded to the URL given by the directive.
+# server context location /match/here {proxy_pass http://example.com;}. . .  By default proxy_pass does not verify the certificate of the endpoint if it is https.</description>
+    </item>
+    
+    <item>
+      <title>Python - Virtual Environment Setup</title>
+      <link>/2020/01/28/python-virtualenv/</link>
+      <pubDate>Tue, 28 Jan 2020 15:00:08 -0600</pubDate>
+      
+      <guid>/2020/01/28/python-virtualenv/</guid>
+      <description>Python Virtual Environment   Creating a virtual environment in a new folder
+python -m venv FolderName ⏎  Creating virtual environment inside an existent folder. Navigate to the folder inside where you want to create the environment
+python -m venv . ⏎Notice the dot at the end of the statement. It basically says &amp;ldquo;here&amp;rdquo;
+ The -m stands for module-name. venv is a built-in Python module that helps with virtual environments</description>
+    </item>
+    
+    <item>
+      <title>Nginx - notes</title>
+      <link>/2020/01/28/nginx-docker/</link>
+      <pubDate>Tue, 28 Jan 2020 01:09:50 -0600</pubDate>
+      
+      <guid>/2020/01/28/nginx-docker/</guid>
+      <description>Main commands [sudo] nginx -s signal (while an nginx instance is running)
+   Signal Action     stop fast shutdown   quit graceful shutdown (waits for workers)   reload reload the configuration file   reopen reopen the log files    test nginx configuration changes
+# nginx -tthe configuration file /usr/local/nginx/conf/nginx.conf syntax is okconfiguration file /usr/local/nginx/conf/nginx.conf test is successful Configuration files # nginx server configuration directory/usr/local/nginx/conf//etc/nginx/# main configuration file/usr/local/nginx/conf/nginx.</description>
+    </item>
     
     <item>
       <title>PostGIS - Installation</title>
@@ -18,8 +102,9 @@
       <pubDate>Fri, 24 Jan 2020 22:20:35 -0600</pubDate>
       
       <guid>/2020/01/24/postgis/</guid>
-      <description>Update APT package list and upgrade system sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
- </description>
+      <description>Installation   Update APT package list and upgrade system Prerequisite: PostgreSQL will need to be installed and configured beforehand.
+sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
+   Add UbuntuGIS-unstable repository &amp;amp; update sudo add-apt-repository ppa:ubuntugis/ppa sudo apt-get update   Install PostGIS sudo apt install postgis postgresql-12.1-postgis-3.0.0  replace the postgresql version with your own</description>
     </item>
     
     <item>
