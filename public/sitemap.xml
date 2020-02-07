@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2020-02-05T16:35:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-02-05T16:35:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/02/05/ubuntu_setup/</loc>
+    <lastmod>2020-02-05T16:35:04-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/docker/</loc>
     <lastmod>2020-02-04T13:54:46-06:00</lastmod>
   </url>
@@ -18,17 +33,7 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/nginx/</loc>
-    <lastmod>2020-02-04T13:54:46-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
     <lastmod>2020-02-04T13:54:46-06:00</lastmod>
   </url>
   

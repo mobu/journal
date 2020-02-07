@@ -7,7 +7,7 @@
         <meta name="description" content="Setting up PostgreSQL on Ubuntu">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.62.2" />
+        <meta name="generator" content="Hugo 0.63.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="PostgreSQL - Setup &amp; Installation">
@@ -101,12 +101,12 @@
     <h1 id="installing-postgresql">Installing PostgreSQL</h1>
 <p><strong>Prerequisite</strong>: Make sure to have <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04">Ubuntu</a> set up first.</p>
 <ol>
-<li>Using apt package manager, install Postgres (it's in the default Ubuntu repo).</li>
+<li>Using apt package manager, install Postgres (it&rsquo;s in the default Ubuntu repo).</li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt update
 $ sudo apt install postgresql postgresql-contrib
 </code></pre></div><ol start="2">
-<li>Postgres associates roles with a matching Unix/Linux system account. So let's Switch over to the <strong>postgres</strong> account on your server by typing:</li>
+<li>Postgres associates roles with a matching Unix/Linux system account. So let&rsquo;s Switch over to the <strong>postgres</strong> account on your server by typing:</li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo -i -u postgres
 </code></pre></div><blockquote>

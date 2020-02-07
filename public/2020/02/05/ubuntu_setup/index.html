@@ -3,21 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Stream tutorial &middot; Mubasser Kamal</title>
-        <meta name="description" content="Streams To create a Stream you have to create a StreamController
-var controller = new StreamController&lt;String&gt;();controller.add(&#34;Item1&#34;); // Put first item on the belt The generic type (in this case String) that has to be passed when creating a StreamController defines which type of objects we can push onto the Stream.  Now we’ve got the trap set, using the .listen() method on the stream of the StreamController.
-var controller = new StreamController&lt;String&gt;();controller.">
+        <title>Ubuntu Setup &middot; Mubasser Kamal</title>
+        <meta name="description" content="Setting up Ubuntu  Creating a New User adduser mobu Set up root privileges (sudo) for our normal account usermod -aG sudo mobuThe command ‘usermod‘ is used to modify or change any attributes of a already created user account via command line.
+ -a append the user to the supplemental GROUPS mentioned by the -G option without removing him/her from other groups
+-G new list of supplementary GROUPS">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.63.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="Stream tutorial">
-<meta property="og:description" content="Streams To create a Stream you have to create a StreamController
-var controller = new StreamController&lt;String&gt;();controller.add(&#34;Item1&#34;); // Put first item on the belt The generic type (in this case String) that has to be passed when creating a StreamController defines which type of objects we can push onto the Stream.  Now we’ve got the trap set, using the .listen() method on the stream of the StreamController.
-var controller = new StreamController&lt;String&gt;();controller.">
+        <meta property="og:title" content="Ubuntu Setup">
+<meta property="og:description" content="Setting up Ubuntu  Creating a New User adduser mobu Set up root privileges (sudo) for our normal account usermod -aG sudo mobuThe command ‘usermod‘ is used to modify or change any attributes of a already created user account via command line.
+ -a append the user to the supplemental GROUPS mentioned by the -G option without removing him/her from other groups
+-G new list of supplementary GROUPS">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/2020/01/21/steamtutorial/">
+<meta property="og:url" content="/2020/02/05/ubuntu_setup/">
 		<link rel="stylesheet" href="../../../../css/dracula.css" rel="stylesheet" id="theme-stylesheet">
 		<script src="../../../../js/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
@@ -83,10 +83,10 @@ var controller = new StreamController&lt;String&gt;();controller.">
 <div class="container">
     <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Stream tutorial</h1>
+    <h1 class="post-title" itemprop="name headline">Ubuntu Setup</h1>
     
     <p class="post-date post-line">
-        <span>Published <time datetime="2020-01-21" itemprop="datePublished">Tue, Jan 21, 2020</time></span>
+        <span>Published <time datetime="2020-02-05" itemprop="datePublished">Wed, Feb 5, 2020</time></span>
         <span>by</span>
         <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
             <span itemprop="name">
@@ -100,33 +100,43 @@ var controller = new StreamController&lt;String&gt;();controller.">
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <h2 id="streams">Streams</h2>
-<p>To create a Stream you have to create a <strong>StreamController</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-dart" data-lang="dart"><span class="kd">var</span> <span class="n">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamController</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+    <h1 id="setting-up-ubuntu">Setting up Ubuntu</h1>
+<ol>
+<li>Creating a New User
+<pre><code>adduser mobu
+</code></pre></li>
+<li>Set up root privileges (<em>sudo</em>) for our normal account
+<pre><code>usermod -aG sudo mobu
+</code></pre><p>The command ‘usermod‘ is used to modify or change any attributes of a already created user account via command line.</p>
+<blockquote>
+<p><strong><em>-a</em></strong> append the user to the supplemental GROUPS mentioned by the -G option without removing him/her from other groups</p>
+<p><strong><em>-G</em></strong> new list of supplementary GROUPS</p>
+<p>// to change username, use the -l switch</p>
+<p><strong><em>usermod -l</em></strong> [old username] [new username]</p>
+</blockquote>
+</li>
+<li>Enable UFW Firewall &amp; open SSH port
+<pre><code>// allow port 22 for SSH
+sudo ufw allow 22
 
-<span class="n">controller</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;</span><span class="s2">Item1</span><span class="s2">&#34;</span><span class="p">)</span><span class="p">;</span> <span class="c1">// Put first item on the belt
-</span></code></pre></div><ul>
-<li>The generic type (in this case String) that has to be passed when
-creating a StreamController defines which type of objects we can push
-onto the Stream.</li>
-</ul>
-<p>Now we’ve got the trap set, using the <code>.listen()</code> method on the stream of the StreamController.</p>
-<div class="highlight"><pre class="chroma"><code class="language-dart" data-lang="dart"><span class="kd">var</span> <span class="n">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamController</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+// enable UFW firewall
+ufw enable
+</code></pre></li>
+<li>Login to new account using SSH
+<pre><code>rsync --archive --chown=mobu:mobu ~/.ssh /home/mobu
+</code></pre><blockquote>
+<p><strong><em>rsync</em></strong> copies the files, directory structure, and ownership from the .ssh folder of the root to /home/mobu</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="securing-ubuntu">Securing Ubuntu</h1>
+<ol>
+<li>Secure shared memory
+<pre><code>sudo nano /etc/fstab
 
-
-<span class="n">controller</span><span class="p">.</span><span class="n">stream</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">=</span><span class="o">&gt;</span> <span class="n">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="p">)</span><span class="p">;</span> <span class="c1">// this is the trap
-</span><span class="c1"></span>
-<span class="n">controller</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;</span><span class="s2">Item1</span><span class="s2">&#34;</span><span class="p">)</span><span class="p">;</span>
-<span class="n">controller</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;</span><span class="s2">Item2</span><span class="s2">&#34;</span><span class="p">)</span><span class="p">;</span>
-<span class="n">controller</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;</span><span class="s2">Item3</span><span class="s2">&#34;</span><span class="p">)</span><span class="p">;</span>
-</code></pre></div><ul>
-<li>You have to pass a function into the .listen() method because it
-needs to know what to do when it “hears” something (when a new data
-object arrived at the end of the Stream).</li>
-<li>This function that you’re passing in needs to accept a parameter that
-is of the same type the StreamController was created with.</li>
-</ul>
-<p><a href="https://www.burkharts.net/apps/blog/fundamentals-of-dart-streams/">https://www.burkharts.net/apps/blog/fundamentals-of-dart-streams/</a></p>
+tmpfs     /run/shm     tmpfs     defaults,noexec,nosuid     0     0
+</code></pre></li>
+</ol>
 
 </div>
 
@@ -135,7 +145,7 @@ is of the same type the StreamController was created with.</li>
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=Stream%20tutorial&url=%2f2020%2f01%2f21%2fsteamtutorial%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=Ubuntu%20Setup&url=%2f2020%2f02%2f05%2fubuntu_setup%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -143,7 +153,7 @@ is of the same type the StreamController was created with.</li>
         
 
         
-            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2020%2f01%2f21%2fsteamtutorial%2f"
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2020%2f02%2f05%2fubuntu_setup%2f"
                 onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="fa fa-facebook"></i>
                 <span class="hidden">Facebook</span>
@@ -151,7 +161,7 @@ is of the same type the StreamController was created with.</li>
         
 
         
-            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2020%2f01%2f21%2fsteamtutorial%2f"
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2020%2f02%2f05%2fubuntu_setup%2f"
               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
               <i class="fa fa-google-plus"></i>
                 <span class="hidden">Google+</span>

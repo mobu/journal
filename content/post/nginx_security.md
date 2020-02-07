@@ -211,7 +211,7 @@ server {
     server_name bar.com;
 }
 ```
-### SSL Configuration
+### 13. SSL Configuration
 ```nginx
 ssl_protocols TLSv1.2 TLSv1.3;
 
@@ -219,6 +219,13 @@ ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES2
 
 ssl_prefer_server_ciphers on;
 ssl_session_cache shared:SSL:10m;
+```
+### 14. Empty Server block to catch arbitrary Host vallues
+```nginx
+server {
+  listen 80 default_server;
+  return 444;
+}
 ```
 Sources:
 https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
