@@ -19,8 +19,8 @@
       
       <guid>/2020/01/24/postgis/</guid>
       <description>Installation   Update APT package list and upgrade system Prerequisite: PostgreSQL will need to be installed and configured beforehand.
-sudo apt updatesudo apt -y upgrade -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
-   Add UbuntuGIS-unstable repository &amp;amp; update sudo add-apt-repository ppa:ubuntugis/ppasudo apt-get update  Install PostGIS sudo apt install postgis postgresql-12.1-postgis-3.0.0 replace the postgresql version with your own</description>
+sudo apt update sudo apt -y upgrade  -y switch basically means automatic yes to prompts; assume &amp;ldquo;yes&amp;rdquo; as answer to all prompts and run non-interactively
+   Add UbuntuGIS-unstable repository &amp;amp; update sudo add-apt-repository ppa:ubuntugis/ppa sudo apt-get update   Install PostGIS sudo apt install postgis postgresql-12.1-postgis-3.0.0  replace the postgresql version with your own</description>
     </item>
     
   </channel>

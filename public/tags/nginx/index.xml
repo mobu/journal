@@ -18,7 +18,7 @@
       <pubDate>Tue, 04 Feb 2020 13:54:46 -0600</pubDate>
       
       <guid>/2020/02/04/letsencrypt/</guid>
-      <description>Basics of Let&amp;rsquo;s Encrypt  open and automated certificate authority Let&amp;rsquo;s Ecnrypt issues free SSL/TLS certificates Certbot - can automatically configure TLS/SSL on both Apache and Nginx web servers   What is a Certificate Authority?
+      <description>Basics of Let&#39;s Encrypt  open and automated certificate authority Let&#39;s Ecnrypt issues free SSL/TLS certificates Certbot - can automatically configure TLS/SSL on both Apache and Nginx web servers   What is a Certificate Authority?
 Certificate authorities (CAs) are entities that cryptographically sign TLS/SSL certificates to vouch for their authenticity.
  3-part process  Install Certbot on your server Run Certbot with a command to obtain your SSL/TLS certificate and save it on your server.</description>
     </item>

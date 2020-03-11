@@ -7,7 +7,7 @@
         <meta name="description" content="Security best practices for nginx">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.63.2" />
+        <meta name="generator" content="Hugo 0.62.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Nginx Security">
@@ -248,7 +248,7 @@ sudo ufw allow 'Nginx Full'
 </span><span class="c1"></span><span class="k">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">&#34;1</span><span class="p">;</span> <span class="k">mode=block&#34;</span><span class="p">;</span>
 
 <span class="c1"># Strict-Transport-Security
-</span><span class="c1"></span><span class="k">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span> <span class="k">includeSubDomains&#34;</span> <span class="s">always</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span> <span class="k">includeSubDomains</span><span class="p">;</span> <span class="k">preload&#34;</span> <span class="s">always</span><span class="p">;</span>
 
 <span class="c1"># Content-Security-Policy
 </span><span class="c1"></span><span class="k">add_header</span> <span class="s">Content-Security-Policy</span> <span class="s">&#34;default-src</span> <span class="s">&#39;self&#39;</span><span class="p">;</span> <span class="k">script-src</span> <span class="s">&#39;self&#39;</span> <span class="s">&#39;unsafe-inline&#39;</span> <span class="s">&#39;unsafe-eval&#39;</span><span class="p">;</span> <span class="k">object-src</span> <span class="s">&#39;none&#39;&#34;</span><span class="p">;</span>
@@ -278,13 +278,25 @@ sudo ufw allow 'Nginx Full'
     <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
     <span class="kn">server_name</span> <span class="s">bar.com</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><h3 id="ssl-configuration">SSL Configuration</h3>
-<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">ssl_protocols</span> <span class="s">TLSv1.2</span> <span class="s">TLSv1.3</span><span class="p">;</span>
+</code></pre></div><h3 id="13-ssl-configuration">13. SSL Configuration</h3>
+<p>Increase the size of the key used in the DH exchange</p>
+<pre><code>openssl dhparam -out /etc/nginx/dhparam.pem 4096
+</code></pre><p>Then add the following line to the nginx configuration file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">ssl_dhparam</span> <span class="s">/etc/nginx/dhparam.pem</span><span class="p">;</span>
 
-<span class="k">ssl_ciphers</span> <span class="s">ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384</span><span class="p">;</span>
+<span class="c1"># TLSv1 is not highly recommended but needed for older browsers
+</span><span class="c1"></span><span class="k">ssl_protocols</span> <span class="s">TLSv1.3</span> <span class="s">TLSv1.2</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1</span><span class="p">;</span>
 
-<span class="k">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
+<span class="k">ssl_ciphers</span> <span class="s">ssl_ciphers</span> <span class="s">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384</span><span class="p">;</span>
+
+<span class="c1"># make the server choose the best cipher instead of the browser
+</span><span class="c1"></span><span class="k">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
 <span class="k">ssl_session_cache</span> <span class="s">shared:SSL:10m</span><span class="p">;</span>
+</code></pre></div><h3 id="14-empty-server-block-to-catch-arbitrary-host-values">14. Empty Server block to catch arbitrary Host values</h3>
+<div class="highlight"><pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
+  <span class="kn">return</span> <span class="mi">444</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div><p>Sources:
 <a href="https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html">https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html</a></p>
 

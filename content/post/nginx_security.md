@@ -176,7 +176,7 @@ add_header X-Content-Type-Options nosniff;
 add_header X-XSS-Protection "1; mode=block";
 
 # Strict-Transport-Security
-add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
 # Content-Security-Policy
 add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'";
@@ -212,15 +212,24 @@ server {
 }
 ```
 ### 13. SSL Configuration
+Increase the size of the key used in the DH exchange
+```
+openssl dhparam -out /etc/nginx/dhparam.pem 4096
+```
+Then add the following line to the nginx configuration file:
 ```nginx
-ssl_protocols TLSv1.2 TLSv1.3;
+ssl_dhparam /etc/nginx/dhparam.pem;
 
-ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+# TLSv1 is not highly recommended but needed for older browsers
+ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1;
 
+ssl_ciphers ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+
+# make the server choose the best cipher instead of the browser
 ssl_prefer_server_ciphers on;
 ssl_session_cache shared:SSL:10m;
 ```
-### 14. Empty Server block to catch arbitrary Host vallues
+### 14. Empty Server block to catch arbitrary Host values
 ```nginx
 server {
   listen 80 default_server;

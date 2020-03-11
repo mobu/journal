@@ -7,7 +7,7 @@
         <meta name="description" content="Setting up LetsEncrypt with Docker and Nginx">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.63.2" />
+        <meta name="generator" content="Hugo 0.62.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Let&#39;s Encrypt - guide">
@@ -98,10 +98,10 @@
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <h1 id="basics-of-lets-encrypt">Basics of Let&rsquo;s Encrypt</h1>
+    <h1 id="basics-of-lets-encrypt">Basics of Let's Encrypt</h1>
 <ol>
 <li>open and automated certificate authority</li>
-<li>Let&rsquo;s Ecnrypt issues free SSL/TLS certificates</li>
+<li>Let's Ecnrypt issues free SSL/TLS certificates</li>
 <li>Certbot - can automatically configure TLS/SSL on both Apache and Nginx web servers</li>
 </ol>
 <blockquote>
@@ -114,20 +114,20 @@
 <li>Run Certbot with a command to <strong>obtain</strong> your SSL/TLS certificate and <strong>save</strong> it on your server.</li>
 <li>Set up a cron job (scheduler) to run Certbot with a Certbot renew command on a weekly basis.</li>
 </ol>
-<p>This certificate consists of a private key and a public key and both these keys are saved in a Let&rsquo;s Encrypt folder on your server.</p>
+<p>This certificate consists of a private key and a public key and both these keys are saved in a Let's Encrypt folder on your server.</p>
 <blockquote>
 <p>Nginx loads both the <strong>private</strong> and <strong>public</strong> keys in order to configure SSL/TLS for your site.</p>
 </blockquote>
 <hr>
 <h1 id="dockerizing-certbot">Dockerizing Certbot</h1>
 <p>A very basic instance of Nginx needs to be running on a host with a domain name before Certbot can be used
-In order for Let&rsquo;s Encrypt to issue you a certificate, an ACME Challenge Request is performed:</p>
+In order for Let's Encrypt to issue you a certificate, an ACME Challenge Request is performed:</p>
 <ol>
 <li>You issue a command to the Certbot agent</li>
-<li>Certbot informs Let&rsquo;s Encrypt that you want an SSL/TLS certificate</li>
-<li>Let&rsquo;s Encrypt sends the Certbot agent a unique token</li>
+<li>Certbot informs Let's Encrypt that you want an SSL/TLS certificate</li>
+<li>Let's Encrypt sends the Certbot agent a unique token</li>
 <li>The Certbot agent places the token at an endpoint on your domain that looks like <a href="http://ohhaithere.com/.well-known/acme-challenge/%7Btoken%7D">http://ohhaithere.com/.well-known/acme-challenge/{token}</a></li>
-<li>If the token at the endpoint matches the token that was sent to the Certbot agent from the Let&rsquo;s Encrypt CA, the challenge request was successful and Let&rsquo;s Encrypt knows that you are in control of the domain.</li>
+<li>If the token at the endpoint matches the token that was sent to the Certbot agent from the Let's Encrypt CA, the challenge request was successful and Let's Encrypt knows that you are in control of the domain.</li>
 </ol>
 <p>Source: <a href="https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx">https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx</a></p>
 
